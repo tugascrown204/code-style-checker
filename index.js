@@ -21,4 +21,9 @@ if (!fs.existsSync(resolvedPath)) {
     process.exit(1);
 }
 
+if (!fs.statSync(resolvedPath).isDirectory()) {
+    console.error(`${resolvedPath} is not a directory.`);
+    process.exit(1);
+}
+
 analyzeCodeDirectory(resolvedPath);
