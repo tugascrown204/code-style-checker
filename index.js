@@ -14,4 +14,11 @@ if (!projectPath) {
     process.exit(1);
 }
 
-analyzeCodeDirectory(path.resolve(projectPath));
+const resolvedPath = path.resolve(projectPath);
+
+if (!fs.existsSync(resolvedPath)) {
+    console.error(`The directory ${resolvedPath} does not exist.`);
+    process.exit(1);
+}
+
+analyzeCodeDirectory(resolvedPath);
